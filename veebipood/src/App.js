@@ -2,6 +2,7 @@ import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import Avaleht from './pages/Avaleht';
 import Ostukorv from './pages/Ostukorv';
+import LisaToode from './pages/LisaToode';
 
 function App() {
   return (
@@ -14,10 +15,14 @@ function App() {
       <Link to="/ostukorv">
         <button>Ostukorvi</button>
       </Link>
+      <Link to="/lisa-toode">
+        <button>Lisa toode</button>
+      </Link>
       <Routes>
         {/* Näitab seda HTMLi localhost:3000/.... */}
         <Route path="avaleht" element={ <Avaleht /> } />
         <Route path="ostukorv" element={ <Ostukorv /> } />
+        <Route path="lisa-toode" element={ <LisaToode /> } />
       </Routes>
     </div>
     

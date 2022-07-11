@@ -1,4 +1,5 @@
 import {useState } from "react";
+import {Link} from 'react-router-dom';
 
 function Avaleht() {
     /* muutuv väärtus (hoitakse HTML-s), funktsiooni abil saan seda muuta */
@@ -51,7 +52,12 @@ function Avaleht() {
             <button onClick={() => muudaKeeltKoosSalvestusega('RU')}>RU</button>
             <div>{tooted.map((element, index) => 
             <div key={index}>
-                <div>{element}</div>
+                {/* <Link to={`/toode/${element.nimi}`}></Link> */}
+                <Link to={"/toode/" + element.nimi.toLowerCase() }>
+                <div>{element.nimi}</div>
+                <div>{element.hind}</div>
+                <div>{element.aktiivne}</div>
+                </Link>
                 <button onClick={() => lisaOstukorvi(element)}>Lisa ostukorvi</button>
             </div>)}</div>
             <button onClick={() => funktsioon(muutuja - 1)}>-1</button>

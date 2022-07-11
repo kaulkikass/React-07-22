@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 function LisaToode() {
   // kõik ref-d lähevad input külge
   const nimiRef = useRef();
+  const hindRef = useRef();
+  const aktiivneRef = useRef();
   // useRef --> lugeda inputi väärtust
   // useState --> näidata error / edukat sõnumit
 
@@ -20,7 +22,7 @@ function LisaToode() {
         m22raS6num("Toode " + nimiRef.current.value + " lisatud") */
         let tooted = localStorage.getItem("tooted");
         tooted = JSON.parse(tooted) || [];
-        tooted.push(nimiRef.current.value);
+        tooted.push({nimi: nimiRef.current.value, hind: hindRef.current.value, aktiivne: aktiivneRef.current.checked});
         tooted = JSON.stringify(tooted);
         localStorage.setItem("tooted",tooted);
         m22raS6num('Toode ' + nimiRef.current.value + ' edukalt lisatud!')
@@ -48,6 +50,10 @@ return (
     <br /> <br />
     <label>Toote nimi</label> <br />
     <input ref={nimiRef} type="text" /> <br />
+    <label>Toote hind</label> <br />
+    <input ref={hindRef} type="number" /> <br />
+    <label>Toote aktiivsus</label> <br />
+    <input ref={aktiivneRef} type="checkbox" /> <br />
     <button onClick={() => sisestaToode()}>Sisesta</button>
     <div>{s6num}</div>
   </div> 
